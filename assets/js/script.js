@@ -12,25 +12,10 @@ $('#currentDay').text(formattedDate);
 
 let formattedTime = rightNow.format("h:mm A"); 
 
-console.log(formattedTime)
+
 
 $("#currentTime").text(formattedTime);
 
-
-
-
-// $ --> JQUERY
-
-//document.getElementById("currentTime").textContent = formattedTime; is equivlent  to
-
-
-
-//dayjs function
-
-
-
-
-//$(function () {
 
 
 
@@ -39,7 +24,7 @@ function colorChanges(){
 
     let blockHourArray = Array.from(blockHourElements); 
 
-    console.log(blockHourArray);
+
 
     //const hourArray = [] is wet so instead do: 
     
@@ -47,11 +32,10 @@ function colorChanges(){
 
 
     blockHourArray.forEach(blockHour => {
-        console.log(blockHour)
+    
         
         let dataHour = blockHour.getAttribute("data-hour");
 
-        console.log(dataHour);
 
         if (dataHour < currentHour) {
             blockHour.classList.add("past");
@@ -61,18 +45,7 @@ function colorChanges(){
             blockHour.classList.add("future");
         }
         })
-
-
-    console.log(blockHourElements)
 };
-
-
-
-
-
-
-
-
 
 $(document).ready(function(){
     // TODO: Add a listener for click events on the save button. This code should
@@ -82,20 +55,57 @@ $(document).ready(function(){
 
     colorChanges();
 
-    document.addEventListener("DOMContentLoaded", function(){
-        var saveButtonVariable = document.querySelectorAll(".saveBtnElement")
+  
 
-        saveButtons.forEach(function(button){
-            button.addEventListener("click", function(){
-                let timeBlock = this.closet(".time-block");
-                let timeBlockId = timeBlock.id; 
-                let userInput = timeBlock.querySelector("description").value; 
+    let timeBlocksContainer = document.getElementById("timeBlocksContainer"); 
 
-                localStorage.setItem(timeBlockId, userInput)
-            })
-        })
-    });
+        timeBlocksContainer.addEventListener("click", function(event){
+            let saveButton = event.target.closest('.saveBtnElement');
+            if (saveButton) {
+                let parentContainer = saveButton.closest(".time-block")
+                let textarea = parentContainer.querySelector(".description")
+                let dataHour = parentContainer.getAttribute("data-hour");
+                saveTextArea(textarea.value, dataHour);
+            } 
+        });
 });
+
+   
+
+function saveTextArea(textContent, dataHour){ 
+    console.log(textContent, dataHour)
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];  
+
+    let existingTask = tasks.find(task => task.blockHour === dataHour);
+
+    if(existingTask) {
+        existingTask.textContent = textContent;
+    } else {
+        let newTask = {blockHour: dataHour, textContent: textContent};
+        tasks.push(newTask);
+    }
+
+
+    tasks.push({blockHour:dataHour, textContent:textContent})
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// timeBlocksContainer.addEventListener("click", function(event){
+//     // Use `.closest()` to find the nearest ancestor which is a save button
+//    
+
+//     
+//         // Use `.closest()` to find the nearest ancestor that is a time-block
+//         // Then use `querySelector` to find the textarea within that time-block
+//         const timeBlock = saveButton.closest('.time-block');
+//         const textArea = timeBlock.querySelector('.description');
+
+//         // Log the value of the textarea
+//         console.log(textArea.value);
+//     }
+
 
     
     //How can DOM traversal be used to get the "hour-x" id of the
@@ -103,43 +113,15 @@ $(document).ready(function(){
     // useful when saving the description in local storage?
     //
 
-
-
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-    //
-    
-
-
-
-
-
-
-
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
 
-
-
-
-
-
-
-
     // TODO: Add code to display the current date in the header of the page.
 
 
   
-
-
-
-
-
 
 
 
