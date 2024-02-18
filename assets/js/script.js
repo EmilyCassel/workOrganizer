@@ -39,7 +39,7 @@ function colorChanges(){
 
         if (dataHour < currentHour) {
             blockHour.classList.add("past");
-        } else if (dataHour === currentHour) {
+        } else if (dataHour == currentHour) {
             blockHour.classList.add("present");
         } else {
             blockHour.classList.add("future");
@@ -117,6 +117,5 @@ function memory() {
 
 
   
-
 
 
