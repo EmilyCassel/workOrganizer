@@ -3,34 +3,62 @@
 // in the html.
 
 
-//current date
-let currentDate = new Date(); 
+const rightNow = dayjs();
 
-let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let formattedDate = rightNow.format("dddd, MMMM DD, YYYY")
 
-let day = dayNames[currentDate.getDay()];
-let month = monthNames[currentDate.getMonth()];
-let date = currentDate.getDate();
-let year = currentDate.getFullYear();
 
-let formattedDate = day + ', ' + month + ' ' + date + ', ' + year;
+$('#currentDay').text(formattedDate);
 
-document.getElementById('currentDay').textContent = formattedDate;
+let formattedTime = rightNow.format("h:mm A"); 
 
-const dayjs = require('dayjs');
+console.log(formattedTime)
 
+$("#currentTime").text(formattedTime);
+
+
+
+
+// $ --> JQUERY
+
+//document.getElementById("currentTime").textContent = formattedTime; is equivlent  to
+
+
+
+//dayjs function
 const currentHour = dayjs().hour();
-
-console.log(currentHour);
-
-
-
-
 
 
 
 //$(function () {
+
+
+
+function colorChanges(){
+    let blockHourElements = document.querySelectorAll("#blockHour"); 
+
+    let blockHourArray = Array.from(blockHourElements); 
+
+    console.log(blockHourArray);
+
+    //const hourArray = [] is wet so instead do: 
+
+    blockHourArray.forEach(blockHour => {
+        console.log(blockHour)
+        })
+
+
+    console.log(blockHourElements)
+};
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,8 +69,8 @@ $(document).ready(function(){
     // local storage. HINT: What does `this` reference in the click listener
     // function? 
 
+    colorChanges();
 
-    
     document.addEventListener("DOMContentLoaded", function(){
         var saveButtonVariable = document.querySelectorAll(".saveBtnElement")
 
@@ -56,6 +84,21 @@ $(document).ready(function(){
             })
         })
     
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
 
     function updateTimeBlocks() {
         var currentHour = dayjs().hour();
@@ -74,9 +117,9 @@ $(document).ready(function(){
             }
         });
 
-    }
+        }
     });
-    
+});
 
 
 
@@ -138,3 +181,6 @@ $(document).ready(function(){
         //hourPresent();
       //  hourFuture();
     //})
+
+
+
