@@ -26,7 +26,7 @@ $("#currentTime").text(formattedTime);
 
 
 //dayjs function
-const currentHour = dayjs().hour();
+
 
 
 
@@ -42,18 +42,29 @@ function colorChanges(){
     console.log(blockHourArray);
 
     //const hourArray = [] is wet so instead do: 
+    
+    const currentHour = dayjs().hour();
+
 
     blockHourArray.forEach(blockHour => {
         console.log(blockHour)
+        
+        let dataHour = blockHour.getAttribute("data-hour");
+
+        console.log(dataHour);
+
+        if (dataHour < currentHour) {
+            blockHour.classList.add("past");
+        } else if (dataHour === currentHour) {
+            blockHour.classList.add("present");
+        } else {
+            blockHour.classList.add("future");
+        }
         })
 
 
     console.log(blockHourElements)
 };
-
-
-
-
 
 
 
@@ -83,49 +94,8 @@ $(document).ready(function(){
                 localStorage.setItem(timeBlockId, userInput)
             })
         })
-    
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function updateTimeBlocks() {
-        var currentHour = dayjs().hour();
-
-        $(".time-block").each(function() {
-            var blockHour = parseInt($(this).attr("data-hour"));
-           
-            $(this).removeClass("past present future");
-
-            if (blockHour < currentHour) {
-                $(this).addClass("past");
-            } else if (blockHour === currentHour) {
-                $(this).addClass("present");
-            } else {
-                $(this).addClass("future");
-            }
-        });
-
-        }
     });
 });
-
-
-
-
-
-
 
     
     //How can DOM traversal be used to get the "hour-x" id of the
@@ -170,17 +140,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-  //document.addEventListener('DOMContentLoaded', function() {
-    //let saveButton = document.getElementById(saveButton); 
-    //saveButton.addEventListener("click", function(){
-      //  hourPast();
-        //hourPresent();
-      //  hourFuture();
-    //})
 
 
 
