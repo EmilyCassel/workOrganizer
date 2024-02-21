@@ -36,7 +36,7 @@ CSS, HTML, JavaScript, dayjs and jquery were all used. Bootstrap was also used.
 
 
 ## Challenges 
-The most notable challenge was making the colors change. Even though the “present ” class was assigned to current hour in the blockHourArray.forEach loop of the colorChanges Function the present color did not want to change.  There were too many equal signs between dataHour and currentHour Another challenge was in the memory function. I had a very had time making the taks remain in the textblock when the page was reloaded
+The most notable challenge was making the colors change. Even though the “present ” class was assigned to current hour in the blockHourArray.forEach loop of the colorChanges Function the present color did not want to change.  There were too many equal signs between dataHour and currentHour Another challenge was in the memory function. I had a very had time making the tasks remain in the textblock when the page was reloaded
 
 
 ## Successes
@@ -47,10 +47,10 @@ A major success was figuring out why the present color not changing and altering
 
 Make it so that the user can either add half hour and quarter hour points or choose to have either of both. 
 Allow calendar importation. 
-Set it up so that the next day and previous day can be accessed to place in furture appointments or look up past information. 
+Set it up so that the next day and previous day can be accessed to place in future appointments or look up past information. 
 Allow change of color. 
 
 
 
-[Flick Finder link] (https://dann9109.github.io/movieapp/
-)
+
+

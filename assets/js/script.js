@@ -1,15 +1,7 @@
-
 const rightNow = dayjs();
-
 let formattedDate = rightNow.format("dddd, MMMM DD, YYYY")
-
-
 $('#currentDay').text(formattedDate);
-
 let formattedTime = rightNow.format("h:mm A"); 
-
-
-
 $("#currentTime").text(formattedTime);
 
 
@@ -19,19 +11,12 @@ function colorChanges(){
     let blockHourElements = document.querySelectorAll("#blockHour"); 
 
     let blockHourArray = Array.from(blockHourElements); 
-
-
-
-    //const hourArray = [] is wet so instead do: 
     
     const currentHour = dayjs().hour();
 
-
     blockHourArray.forEach(blockHour => {
     
-        
         let dataHour = blockHour.getAttribute("data-hour");
-
 
         if (dataHour < currentHour) {
             blockHour.classList.add("past");
@@ -64,7 +49,6 @@ $(document).ready(function(){
 });
 
 function saveTextArea(textContent, dataHour){ 
-    console.log(textContent, dataHour);
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];  
 
